@@ -1,5 +1,6 @@
 package no.hvl.data102.klient;
 
+import no.hvl.data102.Filmarkiv;
 import no.hvl.data102.adt.FILMarkivADT;
 import no.hvl.data102.klient.Meny;
 

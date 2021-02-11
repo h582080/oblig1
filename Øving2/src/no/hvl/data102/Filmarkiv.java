@@ -1,10 +1,42 @@
 package no.hvl.data102;
 
 import no.hvl.data102.adt.FILMarkivADT;
+import no.hvl.data102.Film;
 
 public class Filmarkiv implements FILMarkivADT {
-	private Film[] filmTabell;
+	
+	private Film [] filmTabell;
 	private int antall;
+	private int antallAction;
+	private int antallDrama;
+	private int antallSkrekkfilm;
+	private int antallScifi;
+	
+	
+	public Filmarkiv (int antall) {
+		filmTabell = new Film[antall];
+	}
+	
+	
+	public int getAntall() {
+		return antall;
+	}
+	
+	public int getAntallAction() {
+		return antallAction;
+	}
+	
+	public int getAntallDrama() {
+		return antallDrama;
+	}
+	
+	public int getAntallSkrekkfilm() {
+		return antallSkrekkfilm;
+	}
+	
+	public int getAntallScifi() {
+		return antallScifi;
+	}
 	
 	private Film[] trimTab(Film[] tab, int n) { // n er antall elementer
 		 Film[] filmtab2 = new Film[n];
@@ -18,14 +50,35 @@ public class Filmarkiv implements FILMarkivADT {
 		 
 	}
 	
-	public Film [] hentFilmTabell() {			
-		
+	@Override
+	public Film [] hentFilmTabell() {				
 		return filmTabell;
 	}
 	
+	@Override
 	public void leggTilFilm(Film nyFilm) {		
 		
+		boolean funnet = false;	
+		int i = 0;
 		
+		while(!funnet && i<filmTabell.length) {
+			if(filmTabell[i] == null) {
+				filmTabell[i] = nyFilm;
+				funnet = true;
+				antall++;
+				
+				if(nyFilm.getSjanger().equals("ACTION")) {
+					antallAction++;
+				} else if (nyFilm.getSjanger().equals("DRAMA")) {
+					antallDrama++;
+				} else if(nyFilm.getSjanger().equals("SKREKKFILM")){
+					antallSkrekkfilm++;
+			    } else if(nyFilm.getSjanger().equals("SCIFI")) {
+			    	antallScifi++;
+			    }				
+			}
+			i++;
+		}		
 	}
 	
 	
@@ -51,7 +104,9 @@ public class Filmarkiv implements FILMarkivADT {
 	
 	@Override
 	public Film[] soekTittel (String delstreng) {		
-		int antall = 0;
+		
+		
+		
 		Film[]tempTab = new Film[filmTabell.length];
 		for(int i = 0; i < filmTabell.length; i++) {
 			if(filmTabell[i].getTittel().toUpperCase().contains(delstreng.toUpperCase())) {
@@ -65,9 +120,8 @@ public class Filmarkiv implements FILMarkivADT {
 	}
 	
 	
-	
+	@Override
 	public Film[] soekProdusent (String delstreng) {	
-		int antall = 0;
 		
 		Film[]tempTab = new Film[filmTabell.length];
 		for(int i = 0; i < filmTabell.length; i++) {
@@ -82,35 +136,16 @@ public class Filmarkiv implements FILMarkivADT {
 		return tempTab;	
 	}
 	
-	
-	
-	public int antall (Sjanger sjanger) {
+	@Override
+    public int antall (Sjanger sjanger) {
 		
-		int antall = 0;
+		int ant = 0;
 			
-		for(int i = 0; i <= filmTabell.length; i++) {
+		for(int i = 0; i < filmTabell.length; i++) {
 			if(filmTabell[i].getSjanger().equals(sjanger)) {
-				antall++;				
+				ant++;				
 			}
 		}
-		return antall;
+		return ant;
 	}
-	
-	
-	
-	@Override
-	public int antall() {
-		
-		int antall = 0;
-		
-		for (int i = 0; i <= filmTabell.length; i++) {
-			antall++;
-		}
-		
-		return antall;
-		
-	}
-	
-	
-
 } // class

@@ -4,6 +4,12 @@ import no.hvl.data102.Sjanger;
 
 public interface FILMarkivADT {
 	
+	public int getAntall();
+	public int getAntallAction();
+	public int getAntallDrama();
+	public int getAntallSkrekkfilm();
+	public int getAntallScifi();
+	
 	Film [] hentFilmTabell ();
 	
 	void leggTilFilm (Film nyFilm);
@@ -14,9 +20,8 @@ public interface FILMarkivADT {
 	
 	Film[] soekProdusent (String delStreng);
 	
-	int antall (Sjanger sjanger);
+	public int antall (Sjanger sjanger);
 	
-	int antall();
 
 } //interface
 

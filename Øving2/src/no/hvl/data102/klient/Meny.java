@@ -14,23 +14,43 @@ public class Meny{
 	 
 
 	 public void start() {
+		 
+		 
 		 Scanner sc = new Scanner(System.in);
 		 
 		 while(true) {
-			 System.out.println("\nSkrin inn en kommando...");
+			 System.out.println("\nSkriv inn en kommando...");
+			 System.out.println("1: For å legge inn en film");
+			 System.out.println("2: Søk film tittel");
+			 System.out.println("3: Søk film film skaper");
+			 System.out.println("4: Skriv ut Antall filmer og sjangere");
+			 System.out.println("5: Avslutt program");
+			 
 			 
 			 switch (sc.nextLine()) {
-			 
-			 case "kommando" :
-				 System.out.println("Kommandoer: viser kommando");
-				 break;
-			
-			 case "lesinnfilm":
-				 tekstgr.lesFilm(filma);
-				 break;
-			
+			 		 
+			 case "1":
+				 tekstgr.lesFilm();
 				 
-			 case "avslutt":
+				 break;
+				 
+			 case "2":
+				 String tittel = sc.next("Skriv inn tittel");
+				 tekstgr.skrivUtFilmDelstrengITittel(filma, tittel);
+				 
+				 break;
+				 
+			 case "3":
+				 String filmskaper = sc.next("Skriv inn film skaper"); 
+				 tekstgr.skrivUtFilmProdusent(filma, filmskaper);
+				 break;	
+				 			 
+			 case "4":
+				 tekstgr.skrivUtStatistikk(filma);	
+				 
+				 break;
+				 
+			 case "5":
 				 System.out.println("Avslutter...");
 				 sc.close();
 				 System.exit(0);

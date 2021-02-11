@@ -3,16 +3,8 @@ package no.hvl.data102;
 public enum Sjanger {
 	ACTION, 
 	DRAMA, 
-	HISTORY, 
-	SCIFI, 
-	COMEDY, 
-	THRILLER, 
-	ROMANCE, 
-	MYSTERY, 
-	CRIME, 
-	ANIMATION, 
-	ADEVNTURE, 
-	FANTASY;
+	SKREKKFILM, 
+	SCIFI; 
 	
 	public static Sjanger finnSjanger(String navn) {
 		Sjanger sjang = null;
